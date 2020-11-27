@@ -37,15 +37,6 @@ pub fn test_tick() {
 }
 
 #[wasm_bindgen_test]
-pub fn test_render() {
-    let universe = initial_universe();
-
-    let rendered = universe.render();
-
-    assert_eq!(rendered, "◻◻◻◻◻◻\n◻◻◻◼◻◻\n◻◻◻◼◻◻\n◻◻◻◼◻◻\n◻◻◻◻◻◻\n◻◻◻◻◻◻\n");
-}
-
-#[wasm_bindgen_test]
 pub fn test_width() {
     let universe = initial_universe();
     assert_eq!(universe.width(), 6);
