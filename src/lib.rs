@@ -1,5 +1,3 @@
-mod utils;
-
 use wasm_bindgen::prelude::*;
 use std::fmt;
 use js_sys::Math::random;
