@@ -9,7 +9,7 @@ const GRID_COLOR = "#CCCCCC";
 const DEAD_COLOR = "#FFFFFF";
 const ALIVE_COLOR = "#000000";
 
-const universe = Universe.generate_predefined_universe_random(UNIVERSE_HEIGHT, UNIVERSE_WIDTH);
+const universe = Universe.generate_random_universe(UNIVERSE_HEIGHT, UNIVERSE_WIDTH);
 const height = universe.height();
 const width = universe.width();
 

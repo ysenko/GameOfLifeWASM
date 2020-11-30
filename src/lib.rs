@@ -41,7 +41,7 @@ impl Universe {
         universe
     }
 
-    pub fn generate_predefined_universe_random(height: u32, width: u32) -> Universe {
+    pub fn generate_random_universe(height: u32, width: u32) -> Universe {
         let mut universe = Universe::new(height, width);
         let mut live_cells= vec![];
         for row in 0..height {
@@ -57,7 +57,7 @@ impl Universe {
 
     pub fn generate_simple_stable_universe(height: u32, width: u32) -> Universe {
         let mut universe = Universe::new(height, width);
-        let mut live_cells= vec![(27, 28), (28, 28), (29, 28)];
+        let live_cells= vec![(27, 28), (28, 28), (29, 28)];
         universe.set_alive(live_cells.as_slice());
         universe
     }
