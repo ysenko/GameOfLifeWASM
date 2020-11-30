@@ -47,17 +47,23 @@ const getIndex = (row, col) => {
     return row * width + col;
 };
 
+const isBitSet = (idx, bit_array) => {
+    const byte_idx = Math.floor(idx / 8);
+    const bit_mask = 1 << (idx % 8);
+    return (bit_array[byte_idx] & bit_mask) === bit_mask;
+};
+
 const drawCells = () => {
     const cellsPtr = universe.cells();
-    const cells = new Uint8Array(memory.buffer, cellsPtr, width * height);
+    const cells = new Uint8Array(memory.buffer, cellsPtr, width * height / 8);
     ctx.beginPath();
 
     for (let row = 0; row < height; row++) {
         for (let col = 0; col < width; col++) {
             const idx = getIndex(row, col);
-            ctx.fillStyle = cells[idx] === Cell.Dead
-                ? DEAD_COLOR
-                : ALIVE_COLOR;
+            ctx.fillStyle = isBitSet(idx, cells)
+                ? ALIVE_COLOR
+                : DEAD_COLOR;
 
             ctx.fillRect(
                 col * (CELL_SIZE + 1) + 1,
@@ -75,7 +81,6 @@ const resetEpochCounter = () => {
 };
 
 const incrementEpoch = () => {
-    console.log("Currennt value "+epoch_counter.value);
     epoch_counter.value++;
 };
 

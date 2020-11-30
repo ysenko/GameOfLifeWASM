@@ -47,3 +47,11 @@ pub fn test_height() {
     let universe = initial_universe();
     assert_eq!(universe.height(), 6);
 }
+
+#[wasm_bindgen_test]
+pub fn test_generate_simple_stable_universe() {
+    let universe = Universe::generate_simple_stable_universe(64, 64);
+    assert_eq!(universe.get_alive_cell_indexes(), vec![(27, 28), (28, 28), (29, 28)]);
+}
+
+

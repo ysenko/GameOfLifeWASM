@@ -55,6 +55,13 @@ impl Universe {
         universe
     }
 
+    pub fn generate_simple_stable_universe(height: u32, width: u32) -> Universe {
+        let mut universe = Universe::new(height, width);
+        let mut live_cells= vec![(27, 28), (28, 28), (29, 28)];
+        universe.set_alive(live_cells.as_slice());
+        universe
+    }
+
     pub fn tick(&mut self) {
         let mut next = self.cells.clone();
         for row in 0..self.height {
